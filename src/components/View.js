@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
 import Article from './Article';
 import EditForm from './EditForm';
 
@@ -9,11 +8,45 @@ const View = (props) => {
     const [editing, setEditing] = useState(false);
     const [editId, setEditId] = useState();
 
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+
+    //     axios.get('http://localhost:5000/api/articles', {
+    //             headers: {
+    //                 authorization: token
+    //             }
+    //         }).then(res => {
+    //             setArticles(res.data);
+    //         }).catch(err => {
+    //             console.log(error);
+    //         })
+    // }, []);
+
     const handleDelete = (id) => {
-    }
+
+        // useEffect(()=>{
+        //     e.preventDefault();
+        //     axios.delete(`http://localhost:5000/api/articles/:id`)
+        //         .then(res => {
+        //             localStorage.getItem('token', res.data);
+        //             push('/view');
+        //         }).catch(err => {
+        //             console.log(err);
+        //         });
+    };
 
     const handleEdit = (article) => {
-    }
+
+        // useEffect(()=>{
+        //     e.preventDefault();
+        //     axios.get(`http://localhost:5000/api/articles/:id`)
+        //         .then(res => {
+        //             localStorage.getItem('token', res.data);
+        //             push('/view');
+        //         }).catch(err => {
+        //             console.log(err);
+        //         });
+    };
 
     const handleEditSelect = (id)=> {
         setEditing(true);

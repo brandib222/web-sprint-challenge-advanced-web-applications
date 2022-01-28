@@ -5,15 +5,15 @@ function PrivateRoute( props ) {
 
   const {component:Component, ...rest} = props;
 
-  return <Route { ...rest } render= {() => {
+  return (<Route { ...rest } render= {() => {
     if(localStorage.getItem('token')) {
-      return <Component />
+      return <View {...props}/>
     } else {
       return <Redirect to='/' />
     }
   }}
   
-  />
+  />)
 }
 
 export default PrivateRoute;

@@ -11,11 +11,27 @@ const App = () => {
     <AppContainer>
       <BloomHeader/>
       <Header/>
+
       <RouteContainer>
+
         <Route exact path="/">
           <Login/>
-        </Route>          
+        </Route>         
+
+        <Route exact path="/login">
+          <Login/>
+        </Route>  
+
+        <Route exact path="/view">
+          <View />
+        </Route>  
+
+        <Route exact path="/logout">
+          <Logout/>
+        </Route>  
+
       </RouteContainer>
+
     </AppContainer>
   )
 }

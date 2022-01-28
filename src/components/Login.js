@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Login = () => {
 
+    const { push } = useHistory();
+
     const [cred, setCred] = useState({
-        username:'',
-        password: ''
+        username:'Lambda',
+        password: 'School'
     });
 
     const handleChange = (e) => {
-        e.preventDefault();
         setCred({
             ...cred,
             [e.target.name]: e.target.value
@@ -18,15 +21,17 @@ const Login = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post(`http://localhost:5000/api/login`)
-            .then(res => {
-                localStorage.getItem('token', res.data.payload);
-                push('/view');
-            }).catch(err => {
-                console.log(err);
-            });
-   };
+         e.preventDefault();
+         axios.post(`http://localhost:5000/api/login`, cred)
+             .then(res => {
+                 console.log('hi from post', res);
+                 localStorage.setItem('token', res.data.token);
+                 push('/view');
+             }).catch(err => {
+                 console.log(err);
+             });
+    };
+
 
     return(<div>
       <h2>Login</h2>
@@ -43,7 +48,7 @@ const Login = () => {
       </form>
       <p id='error'>Error</p>
       </div>)
-    }
+    };
     // END OF FUNCTION
 
 export default Login;

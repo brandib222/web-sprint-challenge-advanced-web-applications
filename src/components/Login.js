@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Login = () => {
-    
-    return(<ComponentContainer>
-        <ModalContainer>
-            <h1>Welcome to Blogger Pro</h1>
-            <h2>Please enter your account information.</h2>
-        </ModalContainer>
-    </ComponentContainer>);
+
+  const [cred, setCred] = useState({
+      username:'',
+      password: ''
+  });
+
+  const handleChange = (e) => {
+      e.preventDefault();
+      setCred({
+          ...cred,
+          [e.target.name]: e.target.value
+      });
+  }
+
+  return (
+<div>
+      <h2>Login</h2>
+      <form>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input onChange={handleChange} id="username" />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input onChange={handleChange} type="password" id="password" />
+        </div>
+        <button id='submit'>Submit</button>
+      </form>
+      </div>  )
 }
 
 export default Login;
